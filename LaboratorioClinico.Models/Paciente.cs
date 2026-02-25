@@ -11,7 +11,7 @@ namespace LaboratorioClinico.Models
         public string Nombre { get; set; }= string.Empty;
         public string Cedula { get; set; } = string.Empty;
         public DateTime FechaNacimiento { get; set; }
+        public ICollection<ResultadoExamen> Resultados { get; set; } = new List<ResultadoExamen>();
 
-        public ICollection<ResultadoExamen> Resultados { get; set; }
     }
 }

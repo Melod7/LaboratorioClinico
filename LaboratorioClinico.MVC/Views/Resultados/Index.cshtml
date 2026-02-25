@@ -1,0 +1,124 @@
+﻿@model List<LaboratorioClinico.Models.ResultadoExamen>
+
+<h2>Hoja de Resultados de Laboratorio</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Paciente</th>
+            <th>Examen</th>
+            <th>Tipo Clínico</th>
+            <th>Fecha</th>
+            <th>Valor</th>
+            <th>Rango Aceptable</th>
+            <th>Estado Clínico</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            string estado = "";
+            string clase = "";
+
+            if (item.Examen.TipoClinico == "Colesterol")
+            {
+                if (item.Valor < 125)
+                {
+                    estado = "Bajo";
+                    clase = "table-warning";
+                }
+                else if (item.Valor <= 200)
+                {
+                    estado = "Normal";
+                    clase = "table-success";
+                }
+                else if (item.Valor <= 239)
+                {
+                    estado = "Límite alto";
+                    clase = "table-warning";
+                }
+                else
+                {
+                    estado = "Alto";
+                    clase = "table-danger";
+                }
+            }
+            else if (item.Examen.TipoClinico == "Glucosa")
+            {
+                if (item.Valor < 70)
+                {
+                    estado = "Bajo";
+                    clase = "table-warning";
+                }
+                else if (item.Valor <= 100)
+                {
+                    estado = "Normal";
+                    clase = "table-success";
+                }
+                else
+                {
+                    estado = "Alto";
+                    clase = "table-danger";
+                }
+            }
+            else if (item.Examen.TipoClinico == "Trigliceridos")
+            {
+                if (item.Valor < 150)
+                {
+                    estado = "Normal";
+                    clase = "table-success";
+                }
+                else if (item.Valor <= 199)
+                {
+                    estado = "Límite alto";
+                    clase = "table-warning";
+                }
+                else
+                {
+                    estado = "Alto";
+                    clase = "table-danger";
+                }
+            }
+            else if (item.Examen.TipoClinico == "Hemoglobina")
+            {
+                if (item.Valor < 12)
+                {
+                    estado = "Bajo";
+                    clase = "table-danger";
+                }
+                else if (item.Valor <= 16)
+                {
+                    estado = "Normal";
+                    clase = "table-success";
+                }
+                else
+                {
+                    estado = "Alto";
+                    clase = "table-warning";
+                }
+            }
+            else
+            {
+                // Validación genérica con rango aceptable
+                var fueraRango = item.Valor < item.RangoAceptable.ValorMinimo
+                || item.Valor > item.RangoAceptable.ValorMaximo;
+
+                estado = fueraRango ? "Fuera de rango" : "Normal";
+                clase = fueraRango ? "table-danger" : "table-success";
+            }
+
+            <tr class="@clase">
+                <td>@item.Paciente.Nombre</td>
+                <td>@item.Examen.Nombre</td>
+                <td>@item.Examen.TipoClinico</td>
+                <td>@item.Examen.Fecha.ToShortDateString()</td>
+                <td>@item.Valor</td>
+                <td>
+                    @item.RangoAceptable.ValorMinimo -
+                    @item.RangoAceptable.ValorMaximo
+                </td>
+                <td><strong>@estado</strong></td>
+            </tr>
+        }
+    </tbody>
+</table>

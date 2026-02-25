@@ -1,0 +1,27 @@
+﻿@model LaboratorioClinico.Models.ResultadoExamen
+
+<h2>Registrar Resultado</h2>
+
+<form asp-action="Crear">
+    <div>
+        <label>Paciente ID</label>
+        <input asp-for="PacienteId" class="form-control" />
+    </div>
+
+    <div>
+        <label>Examen ID</label>
+        <input asp-for="ExamenId" class="form-control" />
+    </div>
+
+    <div>
+        <label>Valor</label>
+        <input asp-for="Valor" class="form-control" />
+    </div>
+
+    <div>
+        <label>Rango ID</label>
+        <input asp-for="RangoAceptableId" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Resultado</button>
+</form>

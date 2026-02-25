@@ -1,0 +1,22 @@
+﻿@model LaboratorioClinico.Models.Paciente
+
+<h2>Registrar Paciente</h2>
+
+<form asp-action="Crear">
+    <div>
+        <label>Nombre</label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div>
+        <label>Cédula</label>
+        <input asp-for="Cedula" class="form-control" />
+    </div>
+
+    <div>
+        <label>Fecha Nacimiento</label>
+        <input asp-for="FechaNacimiento" type="date" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>

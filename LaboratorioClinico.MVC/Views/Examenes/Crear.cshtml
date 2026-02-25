@@ -1,0 +1,17 @@
+﻿@model LaboratorioClinico.Models.Examen
+
+<h2>Registrar Examen</h2>
+
+<form asp-action="Crear">
+    <div>
+        <label>Nombre</label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div>
+        <label>Fecha</label>
+        <input asp-for="Fecha" type="date" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
