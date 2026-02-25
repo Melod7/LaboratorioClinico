@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="LaboratorioClinico.API/LaboratorioClinico.API.csproj" />
+  <Project Path="LaboratorioClinico.Data/LaboratorioClinico.Data.csproj" />
+  <Project Path="LaboratorioClinico.Models/LaboratorioClinico.Models.csproj" />
+  <Project Path="LaboratorioClinico.MVC/LaboratorioClinico.MVC.csproj" />
+</Solution>
